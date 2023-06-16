@@ -7,7 +7,7 @@ resource "aws_cloudwatch_metric_alarm" "msk_broker_disk_space" {
   namespace                 = "AWS/Kafka"
   period                    = "120"
   statistic                 = "Average"
-  threshold                 = "80"
+  threshold                 = var.disk_threshold
   alarm_description         = "This metric monitors high disk used"
   insufficient_data_actions = []
   actions_enabled = true
@@ -26,7 +26,7 @@ resource "aws_cloudwatch_metric_alarm" "msk_broker_memory" {
   namespace                 = "AWS/Kafka"
   period                    = "120"
   statistic                 = "Average"
-  threshold                 = "20"
+  threshold                 = var.memory_threshold_bytes_free
   alarm_description         = "HighMemoryUsed-Broker"
   insufficient_data_actions = []
   actions_enabled = true
@@ -45,7 +45,7 @@ resource "aws_cloudwatch_metric_alarm" "msk_broker_cpu" {
   namespace                 = "AWS/Kafka"
   period                    = "120"
   statistic                 = "Average"
-  threshold                 = "80"
+  threshold                 = var.cpu_threshold
   alarm_description         = "HighCpu-Used-Broker"
   insufficient_data_actions = []
   actions_enabled = true
