@@ -31,6 +31,16 @@ variable "broker_volume_size" {
   nullable    = false
 }
 
+variable "create_alarm" {
+  type = bool
+  default = false
+}
+
+variable "sns_topic_arn" {
+  type = string
+  default = ""
+}
+
 variable "subnet_ids" {
   type        = list(string)
   description = "Subnet IDs for Client Broker"
