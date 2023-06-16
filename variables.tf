@@ -41,6 +41,21 @@ variable "sns_topic_arn" {
   default = ""
 }
 
+variable "cpu_threshold" {
+  type = number
+  default = 80
+}
+
+variable "disk_threshold" {
+  type = number
+  default = 80
+}
+
+variable "memory_threshold_bytes_free" {
+  type = number
+  default = 400000000
+}
+
 variable "subnet_ids" {
   type        = list(string)
   description = "Subnet IDs for Client Broker"
