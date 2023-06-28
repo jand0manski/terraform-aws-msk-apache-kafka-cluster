@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_metric_alarm" "msk_broker_disk_space" {
   count = var.create_alarm ? var.broker_per_zone * length(var.subnet_ids):0
-  alarm_name                = "${var.name}-HighDiskUsed-Broker-${count.index + 1}"
+  alarm_name                = "msk-${var.name}-HighDiskUsed-Broker-${count.index + 1}"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "3"
   metric_name               = "RootDiskUsed"
@@ -19,7 +19,7 @@ resource "aws_cloudwatch_metric_alarm" "msk_broker_disk_space" {
 }
 resource "aws_cloudwatch_metric_alarm" "msk_broker_memory" {
   count = var.create_alarm ? var.broker_per_zone * length(var.subnet_ids):0
-  alarm_name                = "${var.name}-HighMemoryUsed-Broker-${count.index + 1}"
+  alarm_name                = "msk-${var.name}-HighMemoryUsed-Broker-${count.index + 1}"
   comparison_operator       = "LessThanOrEqualToThreshold"
   evaluation_periods        = "3"
   metric_name               = "MemoryFree"
@@ -38,7 +38,7 @@ resource "aws_cloudwatch_metric_alarm" "msk_broker_memory" {
 }
 resource "aws_cloudwatch_metric_alarm" "msk_broker_cpu" {
   count = var.create_alarm ? var.broker_per_zone * length(var.subnet_ids):0
-  alarm_name                = "${var.name}-HighCpuUsed-Broker-${count.index + 1}"
+  alarm_name                = "msk-${var.name}-HighCpuUsed-Broker-${count.index + 1}"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "3"
   metric_name               = "CpuSystem"
