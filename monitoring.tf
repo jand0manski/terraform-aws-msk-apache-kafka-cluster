@@ -21,9 +21,9 @@ resource "aws_cloudwatch_metric_alarm" "msk_broker_disk_space" {
 resource "aws_cloudwatch_metric_alarm" "msk_broker_memory" {
   count = var.create_alarm ? var.broker_per_zone * length(var.subnet_ids):0
   alarm_name                = "msk-${var.name}-HighMemoryUsed-Broker-${count.index + 1}"
-  comparison_operator       = "LessThanOrEqualToThreshold"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "3"
-  metric_name               = "MemoryFree"
+  metric_name               = "HeapMemoryAfterGC"
   namespace                 = "AWS/Kafka"
   period                    = "120"
   statistic                 = "Average"
