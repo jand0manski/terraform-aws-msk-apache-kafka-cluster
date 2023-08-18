@@ -51,9 +51,9 @@ variable "disk_threshold" {
   default = 80
 }
 
-variable "memory_threshold_bytes_free" {
+variable "memory_threshold_percent" {
   type = number
-  default = 400000000
+  default = 60
 }
 
 variable "subnet_ids" {

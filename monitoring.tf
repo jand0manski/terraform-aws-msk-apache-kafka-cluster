@@ -27,7 +27,7 @@ resource "aws_cloudwatch_metric_alarm" "msk_broker_memory" {
   namespace                 = "AWS/Kafka"
   period                    = "120"
   statistic                 = "Average"
-  threshold                 = var.memory_threshold_bytes_free
+  threshold                 = var.memory_threshold_percent
   alarm_description         = "HighMemoryUsed-Broker"
   ok_actions          = [var.sns_topic_arn]
   insufficient_data_actions = [var.sns_topic_arn]
