@@ -8,7 +8,7 @@ resource "aws_cloudwatch_metric_alarm" "msk_broker_disk_space" {
   period                    = "120"
   statistic                 = "Average"
   threshold                 = var.disk_threshold
-  alarm_description         = "This metric monitors high disk used"
+  alarm_description         = "This metric monitors high disk used \n ${var.extra_alert_desc}"
   actions_enabled = true
   ok_actions          = [var.sns_topic_arn]
   insufficient_data_actions = [var.sns_topic_arn]
@@ -28,7 +28,7 @@ resource "aws_cloudwatch_metric_alarm" "msk_broker_memory" {
   period                    = "120"
   statistic                 = "Average"
   threshold                 = var.memory_threshold_percent
-  alarm_description         = "HighMemoryUsed-Broker"
+  alarm_description         = "HighMemoryUsed-Broker \n ${var.extra_alert_desc}"
   ok_actions          = [var.sns_topic_arn]
   insufficient_data_actions = [var.sns_topic_arn]
   actions_enabled = true
@@ -48,7 +48,7 @@ resource "aws_cloudwatch_metric_alarm" "msk_broker_cpu" {
   period                    = "120"
   statistic                 = "Average"
   threshold                 = var.cpu_threshold
-  alarm_description         = "HighCpu-Used-Broker"
+  alarm_description         = "HighCpu-Used-Broker \n ${var.extra_alert_desc}"
   ok_actions          = [var.sns_topic_arn]
   insufficient_data_actions = [var.sns_topic_arn]
   actions_enabled = true
