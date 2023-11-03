@@ -6,6 +6,10 @@ variable "kafka_version" {
   EOT
   nullable    = false
 }
+variable "extra_alert_desc" {
+  type = string
+  default = ""
+}
 
 variable "broker_instance_type" {
   type        = string
